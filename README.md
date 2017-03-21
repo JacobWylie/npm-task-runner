@@ -2,15 +2,21 @@
 
 <a href="https://docs.npmjs.com/misc/scripts">npm scripts documentation</a>
 
-run mocha: 
-
-$npm test
-
-uglifyjs:
-
-in package.json
-
-script:
-"uglify": "node_modules/.bin/uglifyjs src/models/* src/frontend.js -m -c -o build/app.js"
-
-then: $npm run uglify
+{
+  "name": "dice_simulator_2015",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "mocha",
+    "clear-build": "rm build/*",
+    "uglify": "node_modules/.bin/uglifyjs src/models/* src/frontend.js -m -c -o build/app.js",
+    "copy-files": "cp src/*.html build/ & cp src/*.css build/",
+    "build": "npm run clear-build && npm run copy-files && npm run uglify"     
+  },
+  "author": "Andrew Chalkley",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "uglify-js": "^2.4.23"
+  }
+}
